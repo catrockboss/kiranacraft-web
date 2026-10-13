@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main # Atau 'master' sesuai branch GitHub Anda
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  # COLLECTION 1: BLOG / ARTIKEL
+  - name: "blog"
+    label: "Artikel Blog"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Artikel", name: "title", widget: "string" }
+      - { label: "Tanggal Publikasi", name: "date", widget: "datetime" }
+      - { label: "Gambar Utama", name: "thumbnail", widget: "image", required: false }
+      - { label: "Ringkasan Singkat", name: "description", widget: "text" }
+      - { label: "Isi Konten Blog", name: "body", widget: "markdown" }
+
+  # COLLECTION 2: KATALOG PRODUK KERAMIK
+  - name: "produk"
+    label: "Katalog Produk"
+    folder: "content/produk"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nama Produk", name: "title", widget: "string" }
+      - { label: "Harga (Rp)", name: "price", widget: "number", value_type: "int" }
+      - { label: "Foto Produk", name: "image", widget: "image" }
+      - { label: "Kategori", name: "category", widget: "select", options: ["Vas", "Cangkir & Gelas", "Piring & Mangkuk", "Set Hadiah"] }
+      - { label: "Deskripsi Produk", name: "description", widget: "markdown" }
